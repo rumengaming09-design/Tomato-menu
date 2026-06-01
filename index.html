@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Tomato Menu | Напитки и храна</title>
+    <meta name="description" content="Разгледайте менюто на Tomato - авторски коктейли, премиум уискита, BBQ специалитети и изискани салати.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .bg-jazz-black { background-color: #000000; }
+        .bg-jazz-gold { background-color: #D4AF37; }
+        .text-jazz-gold { color: #D4AF37; }
+        .text-jazz-cream { color: #F5F5DC; }
+        .border-jazz-gold { border-color: #D4AF37; }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-jazz-black">
+    <div class="min-h-screen selection:bg-jazz-gold selection:text-black">
+        
+        <!-- Header -->
+        <header class="pt-12 pb-6 px-6 md:px-16 border-b border-white/10">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                        <img src="https://i.postimg.cc/s2jX3RhP/20260516-160804(1)(1)(1)(1)(1).jpg" alt="Tomato Logo" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold font-serif tracking-tighter text-jazz-gold uppercase">TOMATO</h1>
+                        <span class="text-[8px] tracking-[0.3em] uppercase opacity-40 font-bold">Plovdiv · Since 2012</span>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <a href="tel:0896370777" class="px-5 py-2 border border-jazz-gold/30 text-jazz-gold text-[9px] uppercase tracking-[0.3em] font-black hover:bg-jazz-gold hover:text-black transition-all">089 637 0777</a>
+                    <a href="https://www.google.com/maps/reserve/v/dine/c/cLjMFkgllLM?source=pa&opi=89978449&hl=en-BG" target="_blank" class="px-5 py-2 bg-jazz-gold text-black text-[9px] uppercase tracking-[0.3em] font-black hover:bg-white transition-all">Резервация</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Title Section -->
+        <section class="py-16 px-6 md:px-16 text-center">
+            <div class="max-w-4xl mx-auto">
+                <span class="text-[10px] uppercase tracking-[0.6em] text-jazz-gold mb-4 block font-bold opacity-60">THE FULL COLLECTION</span>
+                <h2 class="text-5xl md:text-8xl font-serif text-white italic tracking-tighter leading-none">
+                    Нашето <br class="block md:hidden"> Меню
+                </h2>
+                <p class="text-white/40 text-sm max-w-lg mx-auto mt-6 italic">Разгледайте нашата селекция от авторски коктейли, премиум напитки и кулинарни изкушения.</p>
+            </div>
+        </section>
+
+        <!-- Menu Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 px-6 mb-16">
+            <button onclick="showSection('drinks')" id="btnDrinks" class="px-8 md:px-12 py-4 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 bg-jazz-gold text-black border-jazz-gold shadow-2xl scale-[1.05]">Напитки</button>
+            <button onclick="showSection('food')" id="btnFood" class="px-8 md:px-12 py-4 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 bg-transparent text-white border-white/20 hover:border-jazz-gold/50">Кухня</button>
+        </div>
+
+        <!-- Drinks Menu Section -->
+        <div id="drinksSection" class="px-6 md:px-16 pb-20 max-w-7xl mx-auto">
+            <div class="space-y-24">
+                <!-- Coffee & Tea -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Напитки с кафе, мляко и чай</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Кафе Lavazza</h4><span class="text-[11px] text-jazz-gold/40">1,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">60 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Кафе без кофеин</h4><span class="text-[11px] text-jazz-gold/40">2,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">60 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Капучино</h4><span class="text-[11px] text-jazz-gold/40">2,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">130 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Кафе Лате</h4><span class="text-[11px] text-jazz-gold/40">2,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">220 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Макиато</h4><span class="text-[11px] text-jazz-gold/40">1,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">60 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Виенско кафе</h4><span class="text-[11px] text-jazz-gold/40">2,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">80 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Кафе фрапе черно/бяло</h4><span class="text-[11px] text-jazz-gold/40">2,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">200 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Кафе Фредо</h4><span class="text-[11px] text-jazz-gold/40">2,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">200 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Ирландско кафе</h4><span class="text-[11px] text-jazz-gold/40">5,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">120 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Мляко с мед и канела</h4><span class="text-[11px] text-jazz-gold/40">2,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">160 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Горещ шоколад</h4><span class="text-[11px] text-jazz-gold/40">2,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">160 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Чай Ронефелд</h4><span class="text-[11px] text-jazz-gold/40">2,20€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">200 мл /билков, горски плодове, зелен, черен/</p></div>
+                    </div>
+                </div>
+
+                <!-- Soft Drinks -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Безалкохолни напитки</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Coca Cola продукти</h4><span class="text-[11px] text-jazz-gold/40">1,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">250 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Soda Schweppes</h4><span class="text-[11px] text-jazz-gold/40">1,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">250 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Минерална вода Девин</h4><span class="text-[11px] text-jazz-gold/40">1,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">400 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Red Bull</h4><span class="text-[11px] text-jazz-gold/40">3,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">250 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Фреш</h4><span class="text-[11px] text-jazz-gold/40">3,20€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 мл /портокал, грейпфрут/</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Лимонади</h4><span class="text-[11px] text-jazz-gold/40">3,20€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 мл</p></div>
+                    </div>
+                </div>
+
+                <!-- Beer -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Бира и Сайдери</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Шуменско</h4><span class="text-[11px] text-jazz-gold/40">1,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">330 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Шуменско</h4><span class="text-[11px] text-jazz-gold/40">2,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">500 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Карлсберг наливна</h4><span class="text-[11px] text-jazz-gold/40">3,40€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">330 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Kloster Weiss</h4><span class="text-[11px] text-jazz-gold/40">4,20€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">500 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Berliner Kindl</h4><span class="text-[11px] text-jazz-gold/40">4,20€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">500 мл</p></div>
+                    </div>
+                </div>
+
+                <!-- Cocktails -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Коктейли</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Mojito</h4><span class="text-[11px] text-jazz-gold/40">4,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">200 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Margarita</h4><span class="text-[11px] text-jazz-gold/40">4,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">150 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Long Island Ice Tea</h4><span class="text-[11px] text-jazz-gold/40">4,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Aperol Spritz</h4><span class="text-[11px] text-jazz-gold/40">4,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">350 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Pink Zu</h4><span class="text-[11px] text-jazz-gold/40">4,99€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">350 мл</p></div>
+                    </div>
+                </div>
+
+                <!-- Whiskey -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Уиски</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Jameson</h4><span class="text-[11px] text-jazz-gold/40">3,40€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">50 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Glenfiddich 12 y.o.</h4><span class="text-[11px] text-jazz-gold/40">6,90€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">50 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Johnnie Walker 12 y.o.</h4><span class="text-[11px] text-jazz-gold/40">5,90€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">50 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Jack Daniels</h4><span class="text-[11px] text-jazz-gold/40">4,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">50 мл</p></div>
+                    </div>
+                </div>
+
+                <!-- Rakia -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Аперитиви и Ракии</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Стралджанска Мускатова Барел</h4><span class="text-[11px] text-jazz-gold/40">3,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">50 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Сливенска перла Барел</h4><span class="text-[11px] text-jazz-gold/40">3,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">50 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Пещерска отлична ракия</h4><span class="text-[11px] text-jazz-gold/40">1,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">50 мл</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Карловска мускатова</h4><span class="text-[11px] text-jazz-gold/40">2,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">50 мл</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Food Menu Section (hidden by default) -->
+        <div id="foodSection" class="px-6 md:px-16 pb-20 max-w-7xl mx-auto hidden">
+            <div class="space-y-24">
+                <!-- Salads -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Салати</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Салата със скариди, авокадо и манго</h4><span class="text-[11px] text-jazz-gold/40">11,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Салата с риба тон</h4><span class="text-[11px] text-jazz-gold/40">8,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Салата с червено цвекло и синьо сирене</h4><span class="text-[11px] text-jazz-gold/40">9,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Средиземноморска салата с моцарела</h4><span class="text-[11px] text-jazz-gold/40">7,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Салата 'Цезар' с пиле и бекон</h4><span class="text-[11px] text-jazz-gold/40">8,70€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                    </div>
+                </div>
+
+                <!-- Appetizers -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Мезета</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Панирана Скаморца с боровинки</h4><span class="text-[11px] text-jazz-gold/40">8,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">200 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Телешки език с масло и гъби</h4><span class="text-[11px] text-jazz-gold/40">9,30€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">250 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Скариди със сметана</h4><span class="text-[11px] text-jazz-gold/40">10,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">200 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Пилешки крилца</h4><span class="text-[11px] text-jazz-gold/40">6,60€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Пържени картофи с пармеджано и труфел</h4><span class="text-[11px] text-jazz-gold/40">5,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">200 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Пърленка с кашкавал</h4><span class="text-[11px] text-jazz-gold/40">3,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">140 гр</p></div>
+                    </div>
+                </div>
+
+                <!-- BBQ -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">BBQ</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Нашите три кюфтета</h4><span class="text-[11px] text-jazz-gold/40">8,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Свински ребра</h4><span class="text-[11px] text-jazz-gold/40">13,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">450 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Адана кебап</h4><span class="text-[11px] text-jazz-gold/40">9,50€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Телешки бон филенца с гъбен сос</h4><span class="text-[11px] text-jazz-gold/40">20,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                    </div>
+                </div>
+
+                <!-- Fish -->
+                <div>
+                    <div class="flex flex-col items-center mb-12">
+                        <div class="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
+                        <h3 class="text-3xl md:text-4xl font-serif text-white italic tracking-tighter text-center">Рибни и Вегетариански</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Филе от лаврак на тиган</h4><span class="text-[11px] text-jazz-gold/40">19,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Филе от сьомга BBQ</h4><span class="text-[11px] text-jazz-gold/40">19,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Ризото с пиле и гъби</h4><span class="text-[11px] text-jazz-gold/40">9,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                        <div class="space-y-3"><div class="flex justify-between items-start"><h4 class="text-lg font-serif italic text-jazz-cream">Паста със скариди и чери домати</h4><span class="text-[11px] text-jazz-gold/40">11,00€</span></div><p class="text-[9px] text-white/30 uppercase tracking-[0.2em]">300 гр</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="border-t border-white/10 pt-16 pb-12 px-8 md:px-16 bg-black mt-12">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left">
+                    <h2 class="text-2xl font-serif text-jazz-gold tracking-tighter uppercase">TOMATO</h2>
+                    <p class="text-[8px] uppercase tracking-[0.3em] text-white/30 mt-2">ул. "Йоаким Груев" 21, Пловдив</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-[9px] uppercase tracking-[0.3em] text-white/40">Сканирай за меню</p>
+                    <div class="mt-3 bg-white p-2 rounded-lg inline-block" id="qrContainer">
+                        <div id="qrCode" class="w-24 h-24 bg-white flex items-center justify-center text-black text-[8px] text-center p-2">Зареди се QR...</div>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-[8px] uppercase tracking-[0.3em] text-white/30">© 2026 Tomato Restaurant</p>
+                    <p class="text-[8px] uppercase tracking-[0.3em] text-white/20 mt-1">Всички права запазени</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(section) {
+            const drinksDiv = document.getElementById('drinksSection');
+            const foodDiv = document.getElementById('foodSection');
+            const btnDrinks = document.getElementById('btnDrinks');
+            const btnFood = document.getElementById('btnFood');
+            
+            if (section === 'drinks') {
+                drinksDiv.classList.remove('hidden');
+                foodDiv.classList.add('hidden');
+                btnDrinks.className = 'px-8 md:px-12 py-4 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 bg-jazz-gold text-black border-jazz-gold shadow-2xl scale-[1.05]';
+                btnFood.className = 'px-8 md:px-12 py-4 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 bg-transparent text-white border-white/20 hover:border-jazz-gold/50';
+            } else {
+                drinksDiv.classList.add('hidden');
+                foodDiv.classList.remove('hidden');
+                btnFood.className = 'px-8 md:px-12 py-4 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 bg-jazz-gold text-black border-jazz-gold shadow-2xl scale-[1.05]';
+                btnDrinks.className = 'px-8 md:px-12 py-4 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 bg-transparent text-white border-white/20 hover:border-jazz-gold/50';
+            }
+        }
+
+        // Генериране на QR код
+        function generateQRCode() {
+            const currentUrl = window.location.href;
+            const qrDiv = document.getElementById('qrCode');
+            if (qrDiv) {
+                qrDiv.innerHTML = `<img src="https://quickchart.io/qr?text=${encodeURIComponent(currentUrl)}&size=100&dark=000000&light=ffffff" alt="QR Code" class="w-24 h-24">`;
+            }
+        }
+
+        generateQRCode();
+    </script>
+</body>
+</html>
