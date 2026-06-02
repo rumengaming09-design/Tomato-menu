@@ -1,549 +1,1100 @@
 <!DOCTYPE html>
+
 <html lang=“bg“>
+
 <head>
+
     <meta charset=“UTF-8“>
+
     <meta name=“viewport“ content=“width=device-width, initial-scale=1.0, user-scalable=yes“>
+
     <title>Tomato Restaurant & Grill</title>
+
     <style>
+
 •	{
-            Margin: 0;
+
+Margin: 0;
+
             Padding: 0;
+
             Box-sizing: border-box;
+
         }
+
+
 
         Body {
+
             Background-color: #0a0a0a;
+
             Font-family: ‚Segoe UI‘, ‚Poppins‘, system-ui, -apple-system, sans-serif;
+
             Color: #e8ddd0;
+
         }
+
+
 
         /* Основен контейнер */
+
         .site-container {
+
             Max-width: 1300px;
+
             Margin: 0 auto;
+
             Background: #0f0e0c;
+
             Min-height: 100vh;
+
         }
+
+
 
         /* Хедър секция – като оригиналния сайт */
+
         .hero-section {
+
             Background: linear-gradient(135deg, #1a1612 0%, #0c0a08 100%);
+
             Padding: 1.8rem 2rem 1.2rem;
+
             Text-align: center;
+
             Border-bottom: 1px solid #2a241e;
+
         }
+
+
 
         .logo-text {
+
             Font-size: 2.8rem;
+
             Font-weight: 800;
+
             Letter-spacing: -1px;
+
             Background: linear-gradient(135deg, #f5a65b, #e07c2c);
+
             -webkit-background-clip: text;
+
             Background-clip: text;
+
             Color: transparent;
+
             Margin-bottom: 0.3rem;
+
         }
+
+
 
         .subhead {
+
             Color: #b68b54;
+
             Font-size: 0.85rem;
+
             Letter-spacing: 2px;
+
             Margin-bottom: 1rem;
+
         }
+
+
 
         /* Температурен индикатор – като на сайта */
+
         .temp-bar {
+
             Display: flex;
+
             Justify-content: flex-end;
+
             Align-items: center;
+
             Gap: 0.5rem;
+
             Font-size: 0.8rem;
+
             Color: #d4a373;
+
             Margin-top: 0.5rem;
+
             Border-top: 1px solid #2a241e;
+
             Padding-top: 0.8rem;
+
         }
+
+
 
         .temp-value {
+
             Background: #1e1a16;
+
             Padding: 0.2rem 0.8rem;
+
             Border-radius: 20px;
+
             Font-weight: 600;
+
         }
+
+
 
         /* Горна лента с език */
+
         .top-bar-flex {
+
             Display: flex;
+
             Justify-content: flex-end;
+
             Margin-bottom: 0.8rem;
+
         }
+
+
 
         .lang-buttons {
+
             Display: flex;
+
             Gap: 0.6rem;
+
             Background: #1c1814;
+
             Padding: 0.3rem 0.8rem;
+
             Border-radius: 50px;
+
         }
+
+
 
         .lang-btn {
+
             Background: none;
+
             Border: none;
+
             Color: #c9b28b;
+
             Font-weight: 600;
+
             Font-size: 0.8rem;
+
             Padding: 0.3rem 1rem;
+
             Border-radius: 30px;
+
             Cursor: pointer;
+
             Transition: 0.2s;
+
             Font-family: inherit;
+
         }
+
+
 
         .lang-btn.active {
+
             Background: #e07c2c;
+
             Color: white;
+
         }
+
+
 
         /* Таб навигация (Кухня / Напитки) */
+
         .tab-nav {
+
             Display: flex;
+
             Justify-content: center;
+
             Gap: 2rem;
+
             Margin: 1.8rem 2rem 1.5rem;
+
             Border-bottom: 2px solid #2a241e;
+
             Padding-bottom: 0.5rem;
+
         }
+
+
 
         .tab-btn {
+
             Background: none;
+
             Border: none;
+
             Font-size: 1.6rem;
+
             Font-weight: 700;
+
             Font-family: inherit;
+
             Padding: 0.4rem 1.8rem;
+
             Cursor: pointer;
+
             Color: #9e8870;
+
             Transition: 0.2s;
+
             Letter-spacing: 1px;
+
         }
+
+
 
         .tab-btn.active {
+
             Color: #e07c2c;
+
             Border-bottom: 3px solid #e07c2c;
+
             Margin-bottom: -0.7rem;
+
         }
+
+
 
         /* Съдържание на табовете */
+
         .tab-pane {
+
             Display: none;
+
             Padding: 0 2rem 2rem 2rem;
+
             Animation: fadeIn 0.25s ease;
+
         }
+
+
 
         .tab-pane.active-pane {
+
             Display: block;
+
         }
+
+
 
         @keyframes fadeIn {
+
             From { opacity: 0; }
+
             To { opacity: 1; }
+
         }
+
+
 
         /* Категории в менюто */
+
         .menu-category {
+
             Margin-bottom: 2rem;
+
         }
+
+
 
         .category-title {
+
             Font-size: 1.7rem;
+
             Font-weight: 700;
+
             Color: #e7b27b;
+
             Border-left: 5px solid #e07c2c;
+
             Padding-left: 1rem;
+
             Margin-bottom: 1.2rem;
+
             Margin-top: 1.5rem;
+
         }
+
+
 
         .category-title:first-of-type {
+
             Margin-top: 0;
+
         }
+
+
 
         /* Мрежа за елементите */
+
         .items-grid {
+
             Display: grid;
+
             Grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
             Gap: 0.8rem 1.5rem;
+
         }
+
+
 
         .menu-item-card {
+
             Background: #13110e;
+
             Border-radius: 1rem;
+
             Padding: 0.8rem 1.2rem;
+
             Transition: all 0.2s;
+
             Border: 1px solid #2a241e;
+
         }
+
+
 
         .menu-item-card:hover {
+
             Background: #1c1814;
+
             Border-color: #e07c2c40;
+
         }
+
+
 
         .item-main {
+
             Display: flex;
+
             Justify-content: space-between;
+
             Align-items: baseline;
+
             Flex-wrap: wrap;
+
             Gap: 0.5rem;
+
         }
+
+
 
         .item-name {
+
             Font-weight: 600;
+
             Font-size: 0.95rem;
+
             Color: #f0e2d2;
+
         }
+
+
 
         .item-price {
+
             Font-weight: 700;
+
             Color: #f2a65a;
+
             Background: #241f1a;
+
             Padding: 0.2rem 0.7rem;
+
             Border-radius: 30px;
+
             Font-size: 0.8rem;
+
             White-space: nowrap;
+
         }
+
+
 
         .item-note {
+
             Font-size: 0.7rem;
+
             Color: #b6986e;
+
             Margin-top: 0.3rem;
+
         }
+
+
 
         Footer {
+
             Background: #0a0907;
+
             Text-align: center;
+
             Padding: 1.5rem;
+
             Border-top: 1px solid #2a241e;
+
             Font-size: 0.8rem;
+
             Color: #b68b54;
+
         }
+
+
 
         .phone {
+
             Color: #e07c2c;
+
             Font-weight: bold;
+
             Font-size: 1rem;
+
         }
+
+
 
         @media (max-width: 700px) {
+
             .tab-btn {
+
                 Font-size: 1.2rem;
+
                 Padding: 0.3rem 1rem;
+
             }
+
             .logo-text {
+
                 Font-size: 2rem;
+
             }
+
             .tab-pane {
+
                 Padding: 0 1rem 1.5rem;
+
             }
+
             .items-grid {
+
                 Grid-template-columns: 1fr;
+
             }
+
         }
+
     </style>
+
 </head>
+
 <body>
+
 <div class=“site-container“>
+
     <div class=“hero-section“>
+
         <div class=“top-bar-flex“>
+
             <div class=“lang-buttons“>
+
                 <button class=“lang-btn active“ data-lang=“bg“>БЪЛГАРСКИ</button>
+
                 <button class=“lang-btn“ data-lang=“en“>ENGLISH</button>
+
             </div>
+
         </div>
+
         <div class=“logo-text“>🍅 TOMATO Restaurant & Grill</div>
+
         <div class=“subhead“>Грил • Бар • Автентични вкусове</div>
+
         <div class=“temp-bar“>
+
             <span>🌡️ София</span>
+
             <span class=“temp-value“>17°C</span>
+
         </div>
+
     </div>
+
+
 
     <!—Таб навигация 
+
     <div class=“tab-nav“>
+
         <button class=“tab-btn active“ data-tab=“kitchen“>🍽️ КУХНЯ</button>
+
         <button class=“tab-btn“ data-tab=“drinks“>🍸 НАПИТКИ</button>
+
     </div>
+
+
 
     <!—Панел КУХНЯ 
+
     <div id=“kitchen-pane“ class=“tab-pane active-pane“>
+
         <div id=“kitchen-content“>
+
             <!—JS ще запълни динамично 
+
         </div>
+
     </div>
+
+
 
     <!—Панел НАПИТКИ 
+
     <div id=“drinks-pane“ class=“tab-pane“>
+
         <div id=“drinks-content“>
+
             <!—JS ще запълни динамично 
+
         </div>
+
     </div>
 
+
+
     <footer>
+
         📍 Tomato Restaurant & Grill | ☎️ <span class=“phone“>+359 896 370 777</span> | ул. „Цар Асен“ 25, София<br>
+
         🕒 Всеки ден: 11:00 – 23:00
+
     </footer>
+
 </div>
 
+
+
 <script>
+
     // --------------------------------------------------------------
+
     // ПЪЛНИ ДАННИ ЗА МЕНЮТО (БЪЛГАРСКИ)
+
     // --------------------------------------------------------------
+
     Const menuDataBG = {
+
         Kitchen: [
+
             { category: „🥗 Салати“, items: [
+
                 „Салата със скариди, авокадо и манго 300г – 11,00€“,
+
                 „Салата с риба тон 300г – 8,50€“,
+
                 „Салата с червено цвекло, печена тиква, круши, синьо сирене, орехи и меден дресинг 300г – 9,50€“,
+
                 „Средиземноморска салата с моцарела 300г – 7,50€“,
+
                 „Селска салата с гриловани зеленчуци 300г – 7,00€“,
+
                 „Салата Мешалале 300г – 7,00€“,
+
                 „Салата ‚Цезар‘ с пиле и бекон 300г – 8,70€“,
+
                 „Салата с гриловани домати и моцарела 300г – 7,70€“,
+
                 „Салата с гриловани зеленчуци и печено козе сирене 300г – 7,50€“,
+
                 „Ракиена салата с халуми 300г – 7,50€“,
+
                 „Шопска салата 300г – 5,70€“,
+
                 „Млечна салата 200г – 5,20€“
+
             ]},
+
             { category: „🍢 Мезета“, items: [
+
                 „Мус от сьомга със зелена салата и багета 200г – 6,70€“,
+
                 „Трио разядки от хумус, мариновани маслини с Фета сирене и мутабал 300г – 7,70€“,
+
                 „Панирана Скаморца с боровинки 200г – 8,50€“,
+
                 „Телешки език с масло и гъби 250г – 9,30€“,
+
                 „Касапско тиганче /телешки език, шкембе, дроб, гъби и вино/ 250г – 7,70€“,
+
                 „Скариди със сметана 200г – 10,50€“,
+
                 „Телешки дроб с яйце и кисели краставици 250г – 6,00€“,
+
                 „Свински уши 250г – 6,00€“,
+
                 „Пилешки крилца 300г – 6,60€“,
+
                 „Хрупкави пилешки хапки с чеснов сос 250г – 7,20€“,
+
                 „Пукани картофи с панчета и кашкавал 250г – 6,70€“,
+
                 „Пържени картофи с пармеджано и труфел 200г – 5,00€“,
+
                 „Пържени картофи 200г – 3,60€“,
+
                 „Пърленка с чесън 100г – 1,50€“,
+
                 „Пърленка с кашкавал 140г – 3,00€“
+
             ]},
+
             { category: „🔥 Томато Промо предложения“, items: [
+
                 „BBQ дъска за 1 човек 250г – 10,00€“,
+
                 „BBQ дъска за 2 души 500г – 20,00€“,
+
                 „BBQ дъска за 4 души 1,5кг – 40,00€“
+
             ]},
+
             { category: „🥩 BBQ“, items: [
+
                 „Нашите три кюфтета със салца и картофи 300г – 8,50€“,
+
                 „Свински ребра 450г – 13,50€“,
+
                 „Телешка наденица 300г – 8,50€“,
+
                 „Адана кебап 300г – 9,50€“,
+
                 „Свински шиш кебап 350г – 8,50€“,
+
                 „Пилешки каренца с гъбен сос 300г - _____“,
+
                 „Наденички Чоризо 250г – 9,50€“,
+
                 „Телешки бон филенца с гъбен сос 300г – 20,00€“,
+
                 „Пилешки чийзбургер 300г – 8,70€“,
+
                 „Пилешки клуб бургер 300г – 10,50€“
+
             ]},
+
             { category: „🐟 Рибни и вегетариански ястия“, items: [
+
                 „Филе от лаврак на тиган 300г – 19,00€“,
+
                 „Филе от сьомга BBQ 300г – 19,00€“,
+
                 „Ризото с пиле и гъби 300г – 9,00€“,
+
                 „Паста със скариди, чери домати и бейби спанак 300г – 11,00€“,
+
                 „Паста с гриловани зеленчуци и босилек 300г – 8,00€“
+
             ]}
+
         ],
+
         Drinks: [
+
             { category: „☕ Напитки с кафе, мляко и чай“, items: [
+
                 „Кафе Lavazza 60 мл – 1,99€“, „Кафе без кофеин 60 мл – 2,50€“, „Капучино 130 мл – 2,60€“,
+
                 „Кафе Лате 220 мл – 2,60€“, „Макиато 60 мл – 1,99€“, „Виенско кафе 80 мл – 2,60€“,
+
                 „Кафе фрапе 200 мл черно/бяло – 2,60€“, „Кафе Фредо 200 мл – 2,60€“, „Ирландско кафе 120 мл – 5,50€“,
+
                 „Мляко с инстантно кафе 160 мл – 2,60€“, „Мляко с мед и канела 160 мл – 2,60€“, „Мляко с какао 160 мл – 2,60€“,
+
                 „Фрапе какао 200 мл – 2,60€“, „Горещ шоколад 160 мл – 2,99€“, „Чай Ронефелд 200 мл /билков, горски плодове, зелен, черен/ - 2,20€“
+
             ]},
+
             { category: „🥤 Безалкохолни напитки“, items: [
+
                 „Газирани продукти на COCA COLA 250 мл – 1,99€“, „Soda Schweppes 250 мл – 1,99€“, „Натурален сок 250 мл – 2,60€“,
+
                 „Минерална вода Девин 400 мл – 1,50€“, „Минерална вода Девин 1,2л – 2,60€“, „Red Bull 250 мл – 3,60€“,
+
                 „Фреш 300 мл /портокал, грейпфрут/ - 3,20€“, „Шейкове 300 мл /млечен, шоколадов/ - 3,20€“, „Лимонади 300 мл – 3,20€“
+
             ]},
+
             { category: „🍺 Бира, сайдери“, items: [
+
                 „Шуменско 330 мл – 1,99€“, „Шуменско 500 мл – 2,50€“, „Карлсберг наливна 330 мл – 3,40€“, „Карлсберг 500 мл – 3,90€“,
+
                 „Карлсберг 00% 330 мл – 3,40€“, „Самърсби 330 мл - _____“, „Kloster Weiss 500 мл – 4,20€“,
+
                 „Kloster Gold 500 мл – 4,20€“, „Berliner Kindl 500 мл – 4,20€“
+
             ]},
+
             { category: „🍸 Коктейли“, items: [
+
                 „Mojito 200 мл – 4,99€“, „Margarita 150 мл – 4,99€“, „Long Island Ice Tea 300 мл – 4,99€“,
+
                 „Aperol Spritz 350 мл – 4,99€“, „Pink Zu 350 мл – 4,99€“, „Bloody Bison 200 мл – 4,99€“, „Bison Smash 150 мл – 4,99€“
+
             ]},
+
             { category: „🥃 Уиски“, items: [
+
                 „Jameson 50 мл – 3,40€“, „Glenfiddich Single Malt 12 y.o. 50 мл – 6,90€“,
+
                 „Johnnie Walker Blended Scotch 12 y.o. 50 мл – 5,90€“, „Jack Daniels 50 мл – 4,60€“, „Jim Beam 50 мл – 3,40€“
+
             ]},
+
             { category: „🍾 Водка“, items: [„Reyka 50 мл – 4,60€“, „Finlandia 50 мл – 2,50€“] },
+
             { category: „🍸 Джин, Ром, Текила“, items: [
+
                 „Bombay Sapphire 50 мл – 3,40€“, „Beefeater 50 мл – 2,50€“, „Bacardi /superior/ 50 мл – 2,50€“, „Jose Cuervo 30 мл – 1,90€“
+
             ]},
+
             { category: „🍷 Вермути и ликьори“, items: [
+
                 „Martini 50 мл /extra dry, Bianco/ - 1,90€“, „Baileys 50 мл – 2,90€“, „Limonchelo 50 мл – 2,90€“, „Jagermaster 50 мл – 2,90€“
+
             ]},
+
             { category: „🥃 Коняк“, items: [„Metaxa ***** 50 мл – 2,90€“] },
+
             { category: „🍇 Аперитиви / Ракии“, items: [
+
                 „Стралджанска мус. Барел 50 мл – 3,00€“, „Стралджанска мус. Ракия 50 мл – 2,70€“, „Сливенска перла барел 50 мл – 3,00€“,
+
                 „Сливенска перла 50 мл – 2,70€“, „Пещерска отл. Ракия 50 мл – 1,50€“, „Ракия ‚Наше лозе‘ 50 мл – 1,50€“,
+
                 „Карловска мус. 50 мл – 2,00€“, „Сръбска дюлева ракия 50 мл – 3,00€“, „Сръбска крушева ракия 50 мл – 3,00€“,
+
                 „Ouzo 50 мл – 2,00€“, „Pernot 50 мл – 2,70€“
+
             ]}
+
         ]
+
     };
+
+
 
     // Английски превод (съкратено, но пълно покритие)
+
     Const menuDataEN = {
+
         Kitchen: [
+
             { category: „🥗 Salads“, items: [
+
                 „Shrimp, avocado & mango salad 300g - €11.00“, „Tuna salad 300g - €8.50“,
+
                 „Beetroot, roasted pumpkin, pear, blue cheese, walnut salad 300g - €9.50“, „Mediterranean mozzarella salad 300g - €7.50“,
+
                 „Village salad with grilled vegetables 300g - €7.00“, „Meshalale salad 300g - €7.00“, „Caesar salad with chicken & bacon 300g - €8.70“,
+
                 „Grilled tomato & mozzarella salad 300g - €7.70“, „Grilled veggies & baked goat cheese 300g - €7.50“,
+
                 „Rakienna salad with halloumi 300g - €7.50“, „Shopski salad 300g - €5.70“, „Milk salad 200g - €5.20“
+
             ]},
+
             { category: „🍢 Appetizers“, items: [
+
                 „Salmon mousse with green salad & baguette 200g - €6.70“, „Triple dip: hummus, marinated olives with feta, mutabbal 300g - €7.70“,
+
                 „Fried Scamorza with blueberries 200g - €8.50“, „Beef tongue with butter & mushrooms 250g - €9.30“,
+
                 „Butcher‘s pan (tongue, tripe, liver, mushrooms, wine) 250g - €7.70“, „Creamy shrimp 200g - €10.50“,
+
                 „Beef liver with egg & pickles 250g - €6.00“, „Pig ears 250g - €6.00“, „Chicken wings 300g - €6.60“,
+
                 „Crispy chicken bites with garlic sauce 250g - €7.20“, „Popcorn potatoes with pancetta & cheese 250g - €6.70“,
+
                 „French fries with parmigiano & truffle 200g - €5.00“, „French fries 200g - €3.60“, „Grilled flatbread with garlic 100g - €1.50“,
+
                 „Grilled flatbread with cheese 140g - €3.00“
+
             ]},
+
             { category: „🔥 Tomato Promo“, items: [
+
                 „BBQ board for 1 person 250g - €10.00“, „BBQ board for 2 persons 500g - €20.00“, „BBQ board for 4 persons 1.5kg - €40.00“
+
             ]},
+
             { category: „🥩 BBQ“, items: [
+
                 „Three meatballs with sauce & potatoes 300g - €8.50“, „Pork ribs 450g - €13.50“, „Beef sausage 300g - €8.50“,
+
                 „Adana kebab 300g - €9.50“, „Pork shish kebab 350g - €8.50“, „Chicken tenders with mushroom sauce 300g - _____“,
+
                 „Chorizo sausages 250g - €9.50“, „Beef tenderloin with mushroom sauce 300g - €20.00“, „Chicken cheeseburger 300g - €8.70“,
+
                 „Chicken club burger 300g - €10.50“
+
             ]},
+
             { category: „🐟 Fish & Vegetarian“, items: [
+
                 „Pan-seared seabass fillet 300g - €19.00“, „BBQ salmon fillet 300g - €19.00“, „Chicken & mushroom risotto 300g - €9.00“,
+
                 „Pasta with shrimp, cherry tomatoes & baby spinach 300g - €11.00“, „Pasta with grilled vegetables & basil 300g - €8.00“
+
             ]}
+
         ],
+
         Drinks: [
+
             { category: „☕ Coffee, Milk & Tea“, items: [
+
                 „Lavazza Coffee 60ml - €1.99“, „Decaf Coffee 60ml - €2.50“, „Cappuccino 130ml - €2.60“, „Café Latte 220ml - €2.60“,
+
                 „Macchiato 60ml - €1.99“, „Viennese Coffee 80ml - €2.60“, „Frappe Coffee 200ml (black/white) - €2.60“, „Fredo Coffee 200ml - €2.60“,
+
                 „Irish Coffee 120ml - €5.50“, „Milk with instant coffee 160ml - €2.60“, „Milk with honey & cinnamon 160ml - €2.60“,
+
                 „Milk with cocoa 160ml - €2.60“, „Cocoa Frappe 200ml - €2.60“, „Hot Chocolate 160ml - €2.99“,
+
                 „Ronnefeldt Tea 200ml (herbal, forest fruits, green, black) - €2.20“
+
             ]},
+
             { category: „🥤 Soft Drinks“, items: [
+
                 „COCA COLA carbonated 250ml - €1.99“, „Schweppes Soda 250ml - €1.99“, „Natural juice 250ml - €2.60“,
+
                 „Devin mineral water 400ml - €1.50“, „Devin mineral water 1.2L - €2.60“, „Red Bull 250ml - €3.60“,
+
                 „Fresh Juice 300ml (orange, grapefruit) - €3.20“, „Milkshakes 300ml (milk, chocolate) - €3.20“, „Lemonade 300ml - €3.20“
+
             ]},
+
             { category: „🍺 Beer & Ciders“, items: [
+
                 „Shumensko 330ml - €1.99“, „Shumensko 500ml - €2.50“, „Carlsberg draught 330ml - €3.40“, „Carlsberg 500ml - €3.90“,
+
                 „Carlsberg 00% 330ml - €3.40“, „Somersby 330ml - _____“, „Kloster Weiss 500ml - €4.20“, „Kloster Gold 500ml - €4.20“,
+
                 „Berliner Kindl 500ml - €4.20“
+
             ]},
+
             { category: „🍸 Cocktails“, items: [
+
                 „Mojito 200ml - €4.99“, „Margarita 150ml - €4.99“, „Long Island Ice Tea 300ml - €4.99“, „Aperol Spritz 350ml - €4.99“,
+
                 „Pink Zu 350ml - €4.99“, „Bloody Bison 200ml - €4.99“, „Bison Smash 150ml - €4.99“
+
             ]},
+
             { category: „🥃 Whisky“, items: [
+
                 „Jameson 50ml - €3.40“, „Glenfiddich 12 y.o 50ml - €6.90“, „Johnnie Walker 12 y.o 50ml - €5.90“,
+
                 „Jack Daniels 50ml - €4.60“, „Jim Beam 50ml - €3.40“
+
             ]},
+
             { category: „🍾 Vodka“, items: [„Reyka 50ml - €4.60“, „Finlandia 50ml - €2.50“] },
+
             { category: „🍸 Gin, Rum, Tequila“, items: [„Bombay Sapphire 50ml - €3.40“, „Beefeater 50ml - €2.50“, „Bacardi superior 50ml - €2.50“, „Jose Cuervo 30ml - €1.90“] },
+
             { category: „🍷 Vermouth & Liqueurs“, items: [„Martini 50ml (extra dry, Bianco) - €1.90“, „Baileys 50ml - €2.90“, „Limonchelo 50ml - €2.90“, „Jagermaster 50ml - €2.90“] },
+
             { category: „🥃 Cognac“, items: [„Metaxa ***** 50ml - €2.90“] },
+
             { category: „🍇 Aperitifs & Rakia“, items: [
+
                 „Straldzhanska Mus. Barrel 50ml - €3.00“, „Straldzhanska grape rakia 50ml - €2.70“, „Slivenska perla barrel 50ml - €3.00“,
+
                 „Slivenska perla 50ml - €2.70“, „Peshtera rakia 50ml - €1.50“, „Nashe Loze rakia 50ml - €1.50“,
+
                 „Karlovska mus. 50ml - €2.00“, „Serbian quince rakia 50ml - €3.00“, „Serbian pear rakia 50ml - €3.00“,
+
                 „Ouzo 50ml - €2.00“, „Pernot 50ml - €2.70“
+
             ]}
+
         ]
+
     };
 
+
+
     Function renderMenu(data, kitchenContainerId, drinksContainerId) {
+
         // Рендер кухня
+
         Const kitchenDiv = document.getElementById(kitchenContainerId);
+
         kitchenDiv.innerHTML = ‚‘;
+
         data.kitchen.forEach(cat => {
+
             const catDiv = document.createElement(‚div‘);
+
             catDiv.className = ‚menu-category‘;
+
             catDiv.innerHTML = `<div class=“category-title“>${cat.category}</div><div class=“items-grid“ id=“grid-${cat.category.replace(/[^a-z0-9]/gi, ‚‘)}“></div>`;
+
             kitchenDiv.appendChild(catDiv);
+
             const grid = catDiv.querySelector(‚.items-grid‘);
+
             cat.items.forEach(item => {
+
                 const [namePart, pricePart] = item.split(‚ – ‚);
+
                 const card = document.createElement(‚div‘);
+
                 card.className = ‚menu-item-card‘;
+
                 card.innerHTML = `<div class=“item-main“><span class=“item-name“>${namePart}</span><span class=“item-price“>${pricePart || ‚—‚}</span></div>`;
+
                 grid.appendChild(card);
+
             });
+
         });
+
         // Рендер напитки
+
         Const drinksDiv = document.getElementById(drinksContainerId);
+
         drinksDiv.innerHTML = ‚‘;
+
         data.drinks.forEach(cat => {
+
             const catDiv = document.createElement(‚div‘);
+
             catDiv.className = ‚menu-category‘;
+
             catDiv.innerHTML = `<div class=“category-title“>${cat.category}</div><div class=“items-grid“ id=“grid-${cat.category.replace(/[^a-z0-9]/gi, ‚‘)}“></div>`;
+
             drinksDiv.appendChild(catDiv);
+
             const grid = catDiv.querySelector(‚.items-grid‘);
+
             cat.items.forEach(item => {
+
                 const [namePart, pricePart] = item.split(‚ – ‚);
+
                 const card = document.createElement(‚div‘);
+
                 card.className = ‚menu-item-card‘;
+
                 card.innerHTML = `<div class=“item-main“><span class=“item-name“>${namePart}</span><span class=“item-price“>${pricePart || ‚—‚}</span></div>`;
+
                 grid.appendChild(card);
+
             });
+
         });
+
     }
 
+
+
     // Първоначално рендиране на български
+
     renderMenu(menuDataBG, ‚kitchen-content‘, ‚drinks-content‘);
 
+
+
     // Езикова логика
+
     Const langBg = document.querySelector(‚[data-lang=“bg“]‘);
+
     Const langEn = document.querySelector(‚[data-lang=“en“]‘);
+
     langBg.addEventListener(‚click‘, () => {
+
         renderMenu(menuDataBG, ‚kitchen-content‘, ‚drinks-content‘);
+
         langBg.classList.add(‚active‘);
+
         langEn.classList.remove(‚active‘);
-    });
-    langEn.addEventListener(‚click‘, () => {
-        renderMenu(menuDataEN, ‚kitchen-content‘, ‚drinks-content‘);
-        langEn.classList.add(‚active‘);
-        langBg.classList.remove(‚active‘);
+
     });
 
-    // Таб логика (Кухня / Напитки)
-    Const tabBtns = document.querySelectorAll(‚.tab-btn‘);
-    Const kitchenPane = document.getElementById(‚kitchen-pane‘);
-    Const drinksPane = document.getElementById(‚drinks-pane‘);
-    tabBtns.forEach(btn => {
-        btn.addEventListener(‚click‘, () => {
-            const tab = btn.getAttribute(‚data-tab‘);
-            if (tab === ‚kitchen‘) {
-                kitchenPane.classList.add(‚active-pane‘);
-                drinksPane.classList.remove(‚active-pane‘);
-                btn.classList.add(‚active‘);
-                document.querySelector(‚.tab-btn[data-tab=“drinks“]‘).classList.remove(‚active‘);
-            } else {
-                kitchenPane.classList.remove(‚active-pane‘);
-                drinksPane.classList.add(‚active-pane‘);
-                btn.classList.add(‚active‘);
-                document.querySelector(‚.tab-btn[data-tab=“kitchen“]‘).classList.remove(‚active‘);
-            }
-        });
+    langEn.addEventListener(‚click‘, () => {
+
+        renderMenu(menuDataEN, ‚kitchen-content‘, ‚drinks-content‘);
+
+        langEn.classList.add(‚active‘);
+
+        langBg.classList.remove(‚active‘);
+
     });
+
+
+
+    // Таб логика (Кухня / Напитки)
+
+    Const tabBtns = document.querySelectorAll(‚.tab-btn‘);
+
+    Const kitchenPane = document.getElementById(‚kitchen-pane‘);
+
+    Const drinksPane = document.getElementById(‚drinks-pane‘);
+
+    tabBtns.forEach(btn => {
+
+        btn.addEventListener(‚click‘, () => {
+
+            const tab = btn.getAttribute(‚data-tab‘);
+
+            if (tab === ‚kitchen‘) {
+
+                kitchenPane.classList.add(‚active-pane‘);
+
+                drinksPane.classList.remove(‚active-pane‘);
+
+                btn.classList.add(‚active‘);
+
+                document.querySelector(‚.tab-btn[data-tab=“drinks“]‘).classList.remove(‚active‘);
+
+            } else {
+
+                kitchenPane.classList.remove(‚active-pane‘);
+
+                drinksPane.classList.add(‚active-pane‘);
+
+                btn.classList.add(‚active‘);
+
+                document.querySelector(‚.tab-btn[data-tab=“kitchen“]‘).classList.remove(‚active‘);
+
+            }
+
+        });
+
+    });
+
 </script>
+
 </body>
+
 </html>
+
+
+
