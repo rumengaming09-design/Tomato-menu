@@ -71,6 +71,13 @@
             drinksTab: „Напитки“,
             foodTab: „Кухня“,
             closeBtn: „Затвори“,
+            workingHoursTitle: „Работно Време“,
+            workingHours: [
+                „Понеделник-сряда от 8ч до 17ч“,
+                „Четвъртък-Петък от 8ч до 23ч“,
+                „Събота от 16ч до 23ч“,
+                „Неделя почивен ден“
+            ],
             // actual menu items
             fullMenu: [
                 {
@@ -104,6 +111,13 @@
             drinksTab: „Drinks“,
             foodTab: „Food“,
             closeBtn: „Close“,
+            workingHoursTitle: „Opening Hours“,
+            workingHours: [
+                „Monday-Wednesday: 8am - 5pm“,
+                „Thursday-Friday: 8am - 11pm“,
+                „Saturday: 4pm - 11pm“,
+                „Sunday: Closed“
+            ],
             fullMenu: [
                 {
                     Title: „Drinks“,
@@ -170,6 +184,15 @@
                         <h2 className=“text-5xl md:text-9xl font-serif text-white italic tracking-tighter leading-none“>
                             {t.menuHeader.split(‚ ‚)[0]} <br /> {t.menuHeader.split(‚ ‚).slice(1).join(‚ ‚)}
                         </h2>
+                        
+                        <div className=“mt-12 flex flex-col items-center“>
+                            <span className=“text-[10px] uppercase tracking-[0.4em] text-jazz-gold mb-4 font-bold opacity-60“>{t.workingHoursTitle}</span>
+                            <div className=“flex flex-col gap-2“>
+                                {t.workingHours.map((line, i) => (
+                                    <p key={i} className=“text-jazz-gold text-xs md:text-sm font-serif italic tracking-wide“>{line}</p>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
                     {/* Toggle Buttons (Drinks / Food) */}
