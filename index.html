@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Tomato Restaurant Menu</title>
-    <!—Tailwind CSS + Google Fonts 
-    <script src=https://cdn.tailwindcss.com></script>
-    <!—Framer Motion via ESM (CDN) 
+    <!-- Tailwind CSS + Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Framer Motion via ESM (CDN) -->
     <script type="importmap">
         {
-            „imports": {
-                „framer-motion": https://esm.sh/framer-motion@11.0.2,
-                „react": https://esm.sh/react@18.2.0,
-                „react-dom": https://esm.sh/react-dom@18.2.0/client,
-                „lucide-react": https://esm.sh/lucide-react@0.263.1
+            "imports": {
+                "framer-motion": "https://esm.sh/framer-motion@11.0.2",
+                "react": "https://esm.sh/react@18.2.0",
+                "react-dom": "https://esm.sh/react-dom@18.2.0/client",
+                "lucide-react": "https://esm.sh/lucide-react@0.263.1"
             }
         }
     </script>
     <style>
         /* custom jazz aesthetic overrides */
-        Body {
-            Background-color: #050505;
-            Font-family: ‚Inter', system-ui, -apple-system, sans-serif;
+        body {
+            background-color: #050505;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
         .font-serif {
-            Font-family: ‚Times New Roman', ‚Playfair Display', Georgia, serif;
+            font-family: 'Times New Roman', 'Playfair Display', Georgia, serif;
         }
         .bg-jazz-black { background-color: #050505; }
         .bg-jazz-gold { background-color: #C6A43F; }
@@ -35,19 +35,19 @@
         .selection\:bg-jazz-gold ::selection { background-color: #C6A43F; color: #050505; }
         .selection\:text-jazz-black ::selection { color: #050505; }
         .animate-spin-slow {
-            Animation: spin 8s linear infinite;
+            animation: spin 8s linear infinite;
         }
         @keyframes spin {
-            From { transform: rotate(0deg); }
-            To { transform: rotate(360deg); }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         /* Hide scrollbar for cleaner look (optional) */
         .no-scrollbar::-webkit-scrollbar {
-            Display: none;
+            display: none;
         }
         .no-scrollbar {
             -ms-overflow-style: none;
-            Scrollbar-width: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -56,22 +56,22 @@
 <div id="root"></div>
 
 <script type="module">
-    Import React, { useState, useEffect, useRef } from ‚https://esm.sh/react@18.2.0';
-    Import { createRoot } from ‚https://esm.sh/react-dom@18.2.0/client';
-    Import { motion, AnimatePresence } from ‚https://esm.sh/framer-motion@11.0.2';
-    Import { X, ChevronLeft, ChevronRight, Star, Quote, UtensilsCrossed, Wine } from ‚https://esm.sh/lucide-react@0.263.1';
+    import React, { useState, useEffect, useRef } from 'https://esm.sh/react@18.2.0';
+    import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+    import { motion, AnimatePresence } from 'https://esm.sh/framer-motion@11.0.2';
+    import { X, ChevronLeft, ChevronRight, Star, Quote, UtensilsCrossed, Wine } from 'https://esm.sh/lucide-react@0.263.1';
 
     // ----------------------------------------------------------------------
     // DATA (MENU + TRANSLATIONS extracted from original)
     // ----------------------------------------------------------------------
-    Const MENU_DATA = {
+    const MENU_DATA = {
         BG: {
-            fullMenuTitle: „Цялата колекция",
-            menuHeader: „Нашето Меню",
-            drinksTab: „Напитки",
-            foodTab: „Кухня",
-            closeBtn: „Затвори",
-            workingHoursTitle: „Работно Време",
+            fullMenuTitle: "Цялата колекция",
+            menuHeader: "Нашето Меню",
+            drinksTab: "Напитки",
+            foodTab: "Кухня",
+            closeBtn: "Затвори",
+            workingHoursTitle: "Работно Време",
             workingHours: [
                 "Понеделник-сряда от 8ч до 17ч",
                 "Четвъртък-Петък от 8ч до 23ч",
@@ -81,37 +81,79 @@
             // actual menu items
             fullMenu: [
                 {
-                    Title: „Напитки",
-                    Categories: [
-                        { name: „Напитки с кафе, мляко и чай", items: [{ name: „Кафе Lavazza", price: „1,99€", info: „60 мл" },{ name: „Кафе без кофеин", price: „2,50€", info: „60 мл" },{ name: „Капучино", price: „2,60€", info: „130 мл" },{ name: „Кафе Лате", price: „2,60€", info: „220 мл" },{ name: „Макиато", price: „1,99€", info: „60 мл" },{ name: „Виенско кафе", price: „2,60€", info: „80 мл" },{ name: „Кафе фрапе черно/бяло", price: „2,60€", info: „200 мл" },{ name: „Кафе Фредо", price: „2,60€", info: „200 мл" },{ name: „Ирландско кафе", price: „5,50€", info: „120 мл" },{ name: „Мляко с инстантно кафе", price: „2,60€", info: „160 мл" },{ name: „Мляко с мед и канела", price: „2,60€", info: „160 мл" },{ name: „Мляко с какао", price: „2,60€", info: „160 мл" },{ name: „Фрапе какао", price: „2,60€", info: „200 мл" },{ name: „Горещ шоколад", price: „2,99€", info: „160 мл" },{ name: „Чай Ронефелд", price: „2,20€", info: „200 мл /билков, горски плодове, зелен, черен/" }] },
-                        { name: „Безалкохолни напитки", items: [{ name: „Coca Cola продукти", price: „1,99€", info: „250 мл" },{ name: „Soda Schweppes", price: „1,99€", info: „250 мл" },{ name: „Натурален сок", price: „2,60€", info: „250 мл" },{ name: „Минерална вода Девин", price: „1,50€", info: „400 мл" },{ name: „Минерална вода Девин", price: „2,60€", info: „1,2 л" },{ name: „Red Bull", price: „3,60€", info: „250 мл" },{ name: „Фреш", price: „3,20€", info: „300 мл /портокал, грейпфрут/" },{ name: „Шейкове", price: „3,20€", info: „300 мл /млечен, шоколадов/" },{ name: „Лимонади", price: „3,20€", info: „300 мл" }] },
-                        { name: „Бира и Сайдери", items: [{ name: „Шуменско", price: „1,99€", info: „330 мл" },{ name: „Шуменско", price: „2,50€", info: „500 мл" },{ name: „Карлсберг наливна", price: „3,40€", info: „330 мл" },{ name: „Карлсберг наливна", price: „3,90€", info: „500 мл" },{ name: „Карлсберг 0.0%", price: „3,40€", info: „330 мл" },{ name: „Kloster Weiss / Gold", price: „4,20€", info: „500 мл" },{ name: „Berliner Kindl", price: „4,20€", info: „500 мл" }] },
-                        { name: „Коктейли", items: [{ name: „Mojito", price: „4,99€", info: „200 мл" },{ name: „Margarita", price: „4,99€", info: „150 мл" },{ name: „Long Island Ice Tea", price: „4,99€", info: „300 мл" },{ name: „Aperol Spritz", price: „4,99€", info: „350 мл" },{ name: „Pink Zu", price: „4,99€", info: „350 мл" },{ name: „Bloody Bison", price: „4,99€", info: „200 мл" },{ name: „Bison Smash", price: „4,99€", info: „150 мл" }] },
-                        { name: „Уиски", items: [{ name: „Jameson", price: „3,40€", info: „50 мл" },{ name: „Glenfiddich Single Malt 12 y.o.", price: „6,90€", info: „50 мл" },{ name: „Johnnie Walker 12 y.o.", price: „5,90€", info: „50 мл" },{ name: „Jack Daniels", price: „4,60€", info: „50 мл" },{ name: „Jim Beam", price: „3,40€", info: „50 мл" }] },
-                        { name: „Други алкохолни", items: [{ name: „Reyka Водка", price: „4,60€", info: „50 мл" },{ name: „Finlandia Водка", price: „2,50€", info: „50 мл" },{ name: „Bombay Sapphire Джин", price: „3,40€", info: „50 мл" },{ name: „Beefeater Джин", price: „2,50€", info: „50 мл" },{ name: „Bacardi Superior Ром", price: „2,50€", info: „50 мл" },{ name: „Jose Cuervo Текила", price: „1,90€", info: „30 мл" }] },
-                        { name: „Вермути, Ликьори и Коняк", items: [{ name: „Martini /Extra Dry, Bianco/", price: „1,90€", info: „50 мл" },{ name: „Baileys", price: „2,90€", info: „50 мл" },{ name: „Limonchelo", price: „2,90€", info: „50 мл" },{ name: „Jagermeister", price: „2,90€", info: „50 мл" },{ name: „Metaxa ***", price: „2,90€", info: „50 мл" }] },
-                        { name: „Аперитиви и Ракии", items: [{ name: „Стралджанска Мускатова Барел", price: „3,00€", info: „50 мл" },{ name: „Стралджанска Мускатова Ракия", price: „2,70€", info: „50 мл" },{ name: „Сливенска перла Барел", price: „3,00€", info: „50 мл" },{ name: „Сливенска перла", price: „2,70€", info: „50 мл" },{ name: „Пещерска отлична ракия", price: „1,50€", info: „50 мл" },{ name: „Ракия ‚Наше лозе'", price: „1,50€", info: „50 мл" },{ name: „Карловска мускатова", price: „2,00€", info: „50 мл" },{ name: „Сръбска дюлева ракия", price: „3,00€", info: „50 мл" },{ name: „Сръбска крушева ракия", price: „3,00€", info: „50 мл" },{ name: „Ouzo", price: „2,00€", info: „50 мл" },{ name: „Pernod", price: „2,70€", info: „50 мл" }] }
+                    title: "Напитки",
+                    categories: [
+                        { name: "Напитки с кафе, мляко и чай", items: [{ name: "Кафе Lavazza", price: "1,99€", info: "60 мл" },{ name: "Кафе без кофеин", price: "2,50€", info: "60 мл" },{ name: "Капучино", price: "2,60€", info: "130 мл" },{ name: "Кафе Лате", price: "2,60€", info: "220 мл" },{ name: "Макиато", price: "1,99€", info: "60 мл" },{ name: "Виенско кафе", price: "2,60€", info: "80 мл" },{ name: "Кафе фрапе черно/бяло", price: "2,60€", info: "200 мл" },{ name: "Кафе Фредо", price: "2,60€", info: "200 мл" },{ name: "Ирландско кафе", price: "5,50€", info: "120 мл" },{ name: "Мляко с инстантно кафе", price: "2,60€", info: "160 мл" },{ name: "Мляко с мед и канела", price: "2,60€", info: "160 мл" },{ name: "Мляко с какао", price: "2,60€", info: "160 мл" },{ name: "Фрапе какао", price: "2,60€", info: "200 мл" },{ name: "Горещ шоколад", price: "2,99€", info: "160 мл" },{ name: "Чай Ронефелд", price: "2,20€", info: "200 мл /билков, горски плодове, зелен, черен/" }] },
+                        { name: "Безалкохолни напитки", items: [{ name: "Coca Cola продукти", price: "1,99€", info: "250 мл" },{ name: "Soda Schweppes", price: "1,99€", info: "250 мл" },{ name: "Натурален сок", price: "2,60€", info: "250 мл" },{ name: "Минерална вода Девин", price: "1,50€", info: "400 мл" },{ name: "Минерална вода Девин", price: "2,60€", info: "1,2 л" },{ name: "Red Bull", price: "3,60€", info: "250 мл" },{ name: "Фреш", price: "3,20€", info: "300 мл /портокал, грейпфрут/" },{ name: "Шейкове", price: "3,20€", info: "300 мл /млечен, шоколадов/" },{ name: "Лимонади", price: "3,20€", info: "300 мл" }] },
+                        { name: "Бира и Сайдери", items: [{ name: "Шуменско", price: "1,99€", info: "330 мл" },{ name: "Шуменско", price: "2,50€", info: "500 мл" },{ name: "Карлсберг наливна", price: "3,40€", info: "330 мл" },{ name: "Карлсберг наливна", price: "3,90€", info: "500 мл" },{ name: "Карлсберг 0.0%", price: "3,40€", info: "330 мл" },{ name: "Kloster Weiss / Gold", price: "4,20€", info: "500 мл" },{ name: "Berliner Kindl", price: "4,20€", info: "500 мл" }] },
+                        { name: "Коктейли", items: [{ name: "Mojito", price: "4,99€", info: "200 мл" },{ name: "Margarita", price: "4,99€", info: "150 мл" },{ name: "Long Island Ice Tea", price: "4,99€", info: "300 мл" },{ name: "Aperol Spritz", price: "4,99€", info: "350 мл" },{ name: "Pink Zu", price: "4,99€", info: "350 мл" },{ name: "Bloody Bison", price: "4,99€", info: "200 мл" },{ name: "Bison Smash", price: "4,99€", info: "150 мл" }] },
+                        { name: "Уиски", items: [{ name: "Jameson", price: "3,40€", info: "50 мл" },{ name: "Glenfiddich Single Malt 12 y.o.", price: "6,90€", info: "50 мл" },{ name: "Johnnie Walker 12 y.o.", price: "5,90€", info: "50 мл" },{ name: "Jack Daniels", price: "4,60€", info: "50 мл" },{ name: "Jim Beam", price: "3,40€", info: "50 мл" }] },
+                        { name: "Други алкохолни", items: [{ name: "Reyka Водка", price: "4,60€", info: "50 мл" },{ name: "Finlandia Водка", price: "2,50€", info: "50 мл" },{ name: "Bombay Sapphire Джин", price: "3,40€", info: "50 мл" },{ name: "Beefeater Джин", price: "2,50€", info: "50 мл" },{ name: "Bacardi Superior Ром", price: "2,50€", info: "50 мл" },{ name: "Jose Cuervo Текила", price: "1,90€", info: "30 мл" }] },
+                        { name: "Вермути, Ликьори и Коняк", items: [{ name: "Martini /Extra Dry, Bianco/", price: "1,90€", info: "50 мл" },{ name: "Baileys", price: "2,90€", info: "50 мл" },{ name: "Limonchelo", price: "2,90€", info: "50 мл" },{ name: "Jagermeister", price: "2,90€", info: "50 мл" },{ name: "Metaxa ***", price: "2,90€", info: "50 мл" }] },
+                        { name: "Аперитиви и Ракии", items: [{ name: "Стралджанска Мускатова Барел", price: "3,00€", info: "50 мл" },{ name: "Стралджанска Мускатова Ракия", price: "2,70€", info: "50 мл" },{ name: "Сливенска перла Барел", price: "3,00€", info: "50 мл" },{ name: "Сливенска перла", price: "2,70€", info: "50 мл" },{ name: "Пещерска отлична ракия", price: "1,50€", info: "50 мл" },{ name: "Ракия ‚Наше лозе'", price: "1,50€", info: "50 мл" },{ name: "Карловска мускатова", price: "2,00€", info: "50 мл" },{ name: "Сръбска дюлева ракия", price: "3,00€", info: "50 мл" },{ name: "Сръбска крушева ракия", price: "3,00€", info: "50 мл" },{ name: "Ouzo", price: "2,00€", info: "50 мл" },{ name: "Pernod", price: "2,70€", info: "50 мл" }] }
                     ]
                 },
                 {
-                    Title: „Меню Кухня",
-                    Categories: [
-                        { name: „Салати", items: [{ name: „Салата със скариди, авокадо и манго", price: „11,00€", info: „300 гр" },{ name: „Салата с риба тон", price: „8,50€", info: „300 гр" },{ name: „Салата с червено цвекло и синьо сирене", price: „9,50€", info: „300 гр /печена тиква, круши, орехи/" },{ name: „Средиземноморска салата с моцарела", price: „7,50€", info: „300 гр" },{ name: „Селска салата с гриловани зеленчуци", price: „7,00€", info: „300 гр" },{ name: „Салата Мешалале", price: „7,00€", info: „300 гр" },{ name: „Салата ‚Цезар' с пиле и бекон", price: „8,70€", info: „300 гр" },{ name: „Салата с гриловани домати и моцарела", price: „7,70€", info: „300 гр" }] },
-                        { name: „Мезета", items: [{ name: „Мус ог сьомга със зелена салата и багета", price: „6,70€", info: „200 гр" },{ name: „Трио разядки от хумус, мариновани маслини с Фета сирене и мутабал", price: „7,70€", info: „300 гр" },{ name: „Панирана Скаморца с боровинки", price: „8,50€", info: „200 гр" },{ name: „Телешки език с масло и гъби", price: „9,30€", info: „250 гр" },{ name: „Касапско тиганче", price: „7,70€", info: „250 гр /телешки език, шкембе, дроб, гъби и вино/" },{ name: „Скариди със сметана", price: „10,50€", info: „200 гр" },{ name: „Телешки дроб с яйце и кисели краставички", price: „6,00€", info: „250 гр" },{ name: „Свински уши", price: „6,00€", info: „250 гр" },{ name: „Пилешки крилца", price: „6,60€", info: „300 гр" },{ name: „Хрупкави пилешки хапки с чеснов сос", price: „7,20€", info: „250 гр" },{ name: „Пукани картофи с панчета и кашкавал", price: „6,70€", info: „250 гр" },{ name: „Пържени картофи с пармеджано и труфел", price: „5,00€", info: „200 гр" },{ name: „Пържени картофи", price: „3,60€", info: „200 гр" },{ name: „Пърленка с чесън", price: „1,50€", info: „100 гр" },{ name: „Пърленка с кашкавал", price: „3,00€", info: „140 гр" }] },
-                        { name: „Tomato Промо Предложения", items: [{ name: „BBQ дъска за 1 човек", price: „10,00€", info: „250 гр" },{ name: „BBQ дъска за 2 души", price: „20,00€", info: „500 гр" },{ name: „BBQ дъска за 4 човека", price: „40,00€", info: „1,5 кг" }] },
-                        { name: „BBQ", items: [{ name: „Нашите три кюфтета", price: „8,50€", info: „300 гр /със салца и картофи/" },{ name: „Свински ребра", price: „13,50€", info: „450 гр" },{ name: „Телешка наденица", price: „8,50€", info: „300 гр" },{ name: „Адана кебап", price: „9,50€", info: „300 гр" },{ name: „Свински шиш кебап", price: „8,50€", info: „350 гр" },{ name: „Наденички Чоризо", price: „9,50€", info: „250 гр" },{ name: „Телешки бон филенца с гъбен сос", price: „20,00€", info: „300 гр" }] },
-                        { name: „Рибни и Вегетариански", items: [{ name: „Филе от лаврак на тиган", price: „19,00€", info: „300 гр" },{ name: „Филе от сьомга BBQ", price: „19,00€", info: „300 гр" },{ name: „Ризото с пиле и гъби", price: „9,00€", info: „300 гр" },{ name: „Паста със скариди и чери домати", price: „11,00€", info: „300 гр /бейби спанак/" },{ name: „Паста с гриловани зеленчуци", price: „8,00€", info: „300 гр /босилек/" }] }
+                    title: "Меню Кухня",
+                    categories: [
+                        {
+                            name: "Салати",
+                            items: [
+                                { name: "Салата със скариди, авокадо и манго", price: "11,00€ / 21,51 лв.", info: "300 гр" },
+                                { name: "Салата с риба тон", price: "8,50€ / 16,62 лв.", info: "300 гр" },
+                                { name: "Средиземноморска салата с моцарела", price: "7,50€ / 14,67 лв.", info: "300 гр /марули, домати, краставици, маслини и арабски хляб/" },
+                                { name: "Селска салата с гриловани зеленчуци", price: "7,00€ / 13,69 лв.", info: "300 гр /домати, краставици, маслини и яйце, натрошено сирене/" },
+                                { name: "Салата Мешалале", price: "7,50€ / 14,67 лв.", info: "300 гр /с домати, хумус, печена чушка и маслини/" },
+                                { name: "Салата 'Цезар' с пиле и бекон", price: "8,70€ / 17,01 лв.", info: "300 гр" },
+                                { name: "Салата с цветни домати и моцарела", price: "7,50€ / 14,67 лв.", info: "300 гр" },
+                                { name: "Ракиена салата с халуми", price: "7,50€ / 14,67 лв.", info: "300 гр" },
+                                { name: "Шопска салата", price: "5,70€ / 11,14 лв.", info: "300 гр" },
+                                { name: "Млечна салата", price: "5,20€ / 10,17 лв.", info: "200 гр" }
+                            ]
+                        },
+                        {
+                            name: "Мезета",
+                            items: [
+                                { name: "Трио разядки от хумус, мариновани маслини с Фета сирене и мутабал", price: "7,70€ / 15,05 лв.", info: "400 гр" },
+                                { name: "Телешки език с масло и гъби", price: "9,30€ / 18,18 лв.", info: "250 гр" },
+                                { name: "Свински уши", price: "6,00€ / 11,73 лв.", info: "250 гр" },
+                                { name: "Хрупкави пилешки хапки с чеснов сос", price: "7,20€ / 14,08 лв.", info: "250 гр" },
+                                { name: "Наденички чоризо", price: "9,50€ / 18,62 лв.", info: "250 гр" },
+                                { name: "Домашни картофи с панчета и кашкавал", price: "6,70€ / 13,10 лв.", info: "250 гр" },
+                                { name: "Пържени картофи с пармеджано и трюфел", price: "5,00€ / 9,77 лв.", info: "200 гр" },
+                                { name: "Пържени картофи", price: "3,60€ / 7,04 лв.", info: "200 гр" },
+                                { name: "Пърленка с чесън", price: "1,50€ / 2,93 лв.", info: "100 гр" },
+                                { name: "Пърленка с кашкавал", price: "3,00€ / 5,85 лв.", info: "140 гр" }
+                            ]
+                        },
+                        {
+                            name: "Tomato Промо Предложения",
+                            items: [
+                                { name: "BBQ дъска за 2-ма души", price: "20,00€ / 39,00 лв.", info: "600 гр /кюфтета, телешка наденица, пилешки каренца, пушени свински гърдички, пържени картофи/" },
+                                { name: "BBQ дъска за 4-ма души", price: "40,00€ / 78,23 лв.", info: "1,400 кг /кюфтета, телешка наденица, пилешки каренца, пушени свински гърдички, вратна пържола, пържени картофи/" }
+                            ]
+                        },
+                        {
+                            name: "BBQ",
+                            items: [
+                                { name: "Бабекови кюфтета", price: "8,70€ / 16,62 лв.", info: "300 гр /сервират се с домашни картофи и салца/" },
+                                { name: "Телешка наденица", price: "8,70€ / 16,62 лв.", info: "300 гр /сервират се с домашни картофи и салца/" },
+                                { name: "Пилешка пържола", price: "8,70€ / 16,62 лв.", info: "300 гр /сервират се с домашни картофи и салца/" },
+                                { name: "Кралски котлет", price: "10,00€ / 19,50 лв.", info: "500 гр /сервират се с домашни картофи и салца/" },
+                                { name: "Шаран или пъстърва на скара", price: "10,00€ / 19,50 лв.", info: "300 гр /сервират се с домашни картофи и салца/" }
+                            ]
+                        }
                     ]
                 }
             ]
         },
         EN: {
-            fullMenuTitle: „The Full Collection",
-            menuHeader: „Our Menu",
-            drinksTab: „Drinks",
-            foodTab: „Food",
-            closeBtn: „Close",
-            workingHoursTitle: „Opening Hours",
+            fullMenuTitle: "The Full Collection",
+            menuHeader: "Our Menu",
+            drinksTab: "Drinks",
+            foodTab: "Food",
+            closeBtn: "Close",
+            workingHoursTitle: "Opening Hours",
             workingHours: [
                 "Monday-Wednesday: 8am - 5pm",
                 "Thursday-Friday: 8am - 11pm",
@@ -120,26 +162,68 @@
             ],
             fullMenu: [
                 {
-                    Title: „Drinks",
-                    Categories: [
-                        { name: „Coffee, Milk & Tea", items: [{ name: „Lavazza Coffee", price: „1,99€", info: „60 ml" },{ name: „Decaf Coffee", price: „2,50€", info: „60 ml" },{ name: „Cappuccino", price: „2,60€", info: „130 ml" },{ name: „Caffe Latte", price: „2,60€", info: „220 ml" },{ name: „Macchiato", price: „1,99€", info: „60 ml" },{ name: „Viennese Coffee", price: „2,60€", info: „80 ml" },{ name: „Frape Black/White", price: „2,60€", info: „200 ml" },{ name: „Freddo Coffee", price: „2,60€", info: „200 ml" },{ name: „Irish Coffee", price: „5,50€", info: „120 ml" },{ name: „Milk with Instant Coffee", price: „2,60€", info: „160 ml" },{ name: „Milk with Honey & Cinnamon", price: „2,60€", info: „160 ml" },{ name: „Milk with Cocoa", price: „2,60€", info: „160 ml" },{ name: „Frape Cocoa", price: „2,60€", info: „200 ml" },{ name: „Hot Chocolate", price: „2,99€", info: „160 ml" },{ name: „Ronnefeldt Tea", price: „2,20€", info: „200 ml /herbal, forest fruits, green, black/" }] },
-                        { name: „Non-Alcoholic Drinks", items: [{ name: „Coca Cola Products", price: „1,99€", info: „250 ml" },{ name: „Soda Schweppes", price: „1,99€", info: „250 ml" },{ name: „Natural Juice", price: „2,60€", info: „250 ml" },{ name: „Mineral Water Devin", price: „1,50€", info: „400 ml" },{ name: „Mineral Water Devin", price: „2,60€", info: „1.2 l" },{ name: „Red Bull", price: „3,60€", info: „250 ml" },{ name: „Fresh Juice", price: „3,20€", info: „300 ml /orange, grapefruit/" },{ name: „Shakes", price: „3,20€", info: „300 ml /milk, chocolate/" },{ name: „Lemonades", price: „3,20€", info: „300 ml" }] },
-                        { name: „Beer & Cider", items: [{ name: „Shumensko", price: „1,99€", info: „330 ml" },{ name: „Shumensko", price: „2,50€", info: „500 ml" },{ name: „Carlsberg Draft", price: „3,40€", info: „330 ml" },{ name: „Carlsberg Draft", price: „3,90€", info: „500 ml" },{ name: „Carlsberg 0.0%", price: „3,40€", info: „330 ml" },{ name: „Kloster Weiss / Gold", price: „4,20€", info: „500 ml" },{ name: „Berliner Kindl", price: „4,20€", info: „500 ml" }] },
-                        { name: „Cocktails", items: [{ name: „Mojito", price: „4,99€", info: „200 ml" },{ name: „Margarita", price: „4,99€", info: „150 ml" },{ name: „Long Island Ice Tea", price: „4,99€", info: „300 ml" },{ name: „Aperol Spritz", price: „4,99€", info: „350 ml" },{ name: „Pink Zu", price: „4,99€", info: „350 ml" },{ name: „Bloody Bison", price: „4,99€", info: „200 ml" },{ name: „Bison Smash", price: „4,99€", info: „150 ml" }] },
-                        { name: „Whiskey", items: [{ name: „Jameson", price: „3,40€", info: „50 ml" },{ name: „Glenfiddich Single Malt 12 y.o.", price: „6,90€", info: „50 ml" },{ name: „Johnnie Walker 12 y.o.", price: „5,90€", info: „50 ml" },{ name: „Jack Daniels", price: „4,60€", info: „50 ml" },{ name: „Jim Beam", price: „3,40€", info: „50 ml" }] },
-                        { name: „Other Alcoholic", items: [{ name: „Reyka Vodka", price: „4,60€", info: „50 ml" },{ name: „Finlandia Vodka", price: „2,50€", info: „50 ml" },{ name: „Bombay Sapphire Gin", price: „3,40€", info: „50 ml" },{ name: „Beefeater Gin", price: „2,50€", info: „50 ml" },{ name: „Bacardi Superior Rum", price: „2,50€", info: „50 ml" },{ name: „Jose Cuervo Tequila", price: „1,90€", info: „30 ml" }] },
-                        { name: „Vermouth, Liqueurs & Cognac", items: [{ name: „Martini /Extra Dry, Bianco/", price: „1,90€", info: „50 ml" },{ name: „Baileys", price: „2,90€", info: „50 ml" },{ name: „Limonchelo", price: „2,90€", info: „50 ml" },{ name: „Jagermeister", price: „2,90€", info: „50 ml" },{ name: „Metaxa ***", price: „2,90€", info: „50 ml" }] },
-                        { name: „Aperitifs & Rakii", items: [{ name: „Straldzha Muscat Barrel", price: „3,00€", info: „50 ml" },{ name: „Straldzha Muscat Rakii", price: „2,70€", info: „50 ml" },{ name: „Slivenska Pearl Barrel", price: „3,00€", info: „50 ml" },{ name: „Slivenska Pearl", price: „2,70€", info: „50 ml" },{ name: „Peshterska Excellent Rakii", price: „1,50€", info: „50 ml" },{ name: „Rakii ‚Our Vineyard'", price: „1,50€", info: „50 ml" },{ name: „Karlovo Muscat", price: „2,00€", info: „50 ml" },{ name: „Serbian Plum Rakii", price: „3,00€", info: „50 ml" },{ name: „Serbian Pear Rakii", price: „3,00€", info: „50 ml" },{ name: „Ouzo", price: „2,00€", info: „50 ml" },{ name: „Pernod", price: „2,70€", info: „50 ml" }] }
+                    title: "Drinks",
+                    categories: [
+                        { name: "Coffee, Milk & Tea", items: [{ name: "Lavazza Coffee", price: "1,99€", info: "60 ml" },{ name: "Decaf Coffee", price: "2,50€", info: "60 ml" },{ name: "Cappuccino", price: "2,60€", info: "130 ml" },{ name: "Caffe Latte", price: "2,60€", info: "220 ml" },{ name: "Macchiato", price: "1,99€", info: "60 ml" },{ name: "Viennese Coffee", price: "2,60€", info: "80 ml" },{ name: "Frape Black/White", price: "2,60€", info: "200 ml" },{ name: "Freddo Coffee", price: "2,60€", info: "200 ml" },{ name: "Irish Coffee", price: "5,50€", info: "120 ml" },{ name: "Milk with Instant Coffee", price: "2,60€", info: "160 ml" },{ name: "Milk with Honey & Cinnamon", price: "2,60€", info: "160 ml" },{ name: "Milk with Cocoa", price: "2,60€", info: "160 ml" },{ name: "Frape Cocoa", price: "2,60€", info: "200 ml" },{ name: "Hot Chocolate", price: "2,99€", info: "160 ml" },{ name: "Ronnefeldt Tea", price: "2,20€", info: "200 ml /herbal, forest fruits, green, black/" }] },
+                        { name: "Non-Alcoholic Drinks", items: [{ name: "Coca Cola Products", price: "1,99€", info: "250 ml" },{ name: "Soda Schweppes", price: "1,99€", info: "250 ml" },{ name: "Natural Juice", price: "2,60€", info: "250 ml" },{ name: "Mineral Water Devin", price: "1,50€", info: "400 ml" },{ name: "Mineral Water Devin", price: "2,60€", info: "1.2 l" },{ name: "Red Bull", price: "3,60€", info: "250 ml" },{ name: "Fresh", price: "3,20€", info: "300 ml /orange, grapefruit/" },{ name: "Shakes", price: "3,20€", info: "300 ml /milk, chocolate/" },{ name: "Lemonades", price: "3,20€", info: "300 ml" }] },
+                        { name: "Beer & Cider", items: [{ name: "Shumensko", price: "1,99€", info: "330 ml" },{ name: "Shumensko", price: "2,50€", info: "500 ml" },{ name: "Carlsberg Draft", price: "3,40€", info: "330 ml" },{ name: "Carlsberg Draft", price: "3,90€", info: "500 ml" },{ name: "Carlsberg 0.0%", price: "3,40€", info: "330 ml" },{ name: "Kloster Weiss / Gold", price: "4,20€", info: "500 ml" },{ name: "Berliner Kindl", price: "4,20€", info: "500 ml" }] },
+                        { name: "Cocktails", items: [{ name: "Mojito", price: "4,99€", info: "200 ml" },{ name: "Margarita", price: "4,99€", info: "150 ml" },{ name: "Long Island Ice Tea", price: "4,99€", info: "300 ml" },{ name: "Aperol Spritz", price: "4,99€", info: "350 ml" },{ name: "Pink Zu", price: "4,99€", info: "350 ml" },{ name: "Bloody Bison", price: "4,99€", info: "200 ml" },{ name: "Bison Smash", price: "4,99€", info: "150 ml" }] },
+                        { name: "Whiskey", items: [{ name: "Jameson", price: "3,40€", info: "50 ml" },{ name: "Glenfiddich Single Malt 12 y.o.", price: "6,90€", info: "50 ml" },{ name: "Johnnie Walker 12 y.o.", price: "5,90€", info: "50 ml" },{ name: "Jack Daniels", price: "4,60€", info: "50 ml" },{ name: "Jim Beam", price: "3,40€", info: "50 ml" }] },
+                        { name: "Other Alcoholic", items: [{ name: "Reyka Vodka", price: "4,60€", info: "50 ml" },{ name: "Finlandia Vodka", price: "2,50€", info: "50 ml" },{ name: "Bombay Sapphire Gin", price: "3,40€", info: "50 ml" },{ name: "Beefeater Gin", price: "2,50€", info: "50 ml" },{ name: "Bacardi Superior Rum", price: "2,50€", info: "50 ml" },{ name: "Jose Cuervo Tequila", price: "1,90€", info: "30 ml" }] },
+                        { name: "Vermouth, Liqueurs & Cognac", items: [{ name: "Martini /Extra Dry, Bianco/", price: "1,90€", info: "50 ml" },{ name: "Baileys", price: "2,90€", info: "50 ml" },{ name: "Limonchelo", price: "2,90€", info: "50 ml" },{ name: "Jagermeister", price: "2,90€", info: "50 ml" },{ name: "Metaxa ***", price: "2,90€", info: "50 ml" }] },
+                        { name: "Aperitifs & Rakii", items: [{ name: "Straldzha Muscat Barrel", price: "3,00€", info: "50 ml" },{ name: "Straldzha Muscat Rakii", price: "2,70€", info: "50 ml" },{ name: "Slivenska Pearl Barrel", price: "3,00€", info: "50 ml" },{ name: "Slivenska Pearl", price: "2,70€", info: "50 ml" },{ name: "Peshterska Excellent Rakii", price: "1,50€", info: "50 ml" },{ name: "Rakii ‚Our Vineyard'", price: "1,50€", info: "50 ml" },{ name: "Karlovo Muscat", price: "2,00€", info: "50 ml" },{ name: "Serbian Plum Rakii", price: "3,00€", info: "50 ml" },{ name: "Serbian Pear Rakii", price: "3,00€", info: "50 ml" },{ name: "Ouzo", price: "2,00€", info: "50 ml" },{ name: "Pernod", price: "2,70€", info: "50 ml" }] }
                     ]
                 },
                 {
-                    Title: „Food Menu",
-                    Categories: [
-                        { name: „Salads", items: [{ name: „Salad with Shrimp, Avocado & Mango", price: „11,00€", info: „300 g" },{ name: „Tuna Salad", price: „8,50€", info: „300 g" },{ name: „Salad with Beets & Blue Cheese", price: „9,50€", info: „300 g /roasted pumpkin, pears, nuts/" },{ name: „Mediterranean Salad with Mozzarella", price: „7,50€", info: „300 g" },{ name: „Village Salad with Grilled Vegetables", price: „7,00€", info: „300 g" },{ name: „Meshalale Salad", price: „7,00€", info: „300 g" },{ name: „‚Caesar' Salad with Chicken & Bacon", price: „8,70€", info: „300 g" },{ name: „Salad with Grilled Tomatoes & Mozzarella", price: „7,70€", info: „300 g" }] },
-                        { name: „Meze", items: [{ name: „Salmon Mousse with Green Salad & Baguette", price: „6,70€", info: „200 g" },{ name: „Trio Appetizers: Hummus, Marinated Olives with Feta & Mutabal", price: „7,70€", info: „300 g" },{ name: „Breaded Scamorza with Blueberries", price: „8,50€", info: „200 g" },{ name: „Beef Tongue with Butter & Mushrooms", price: „9,30€", info: „250 g" },{ name: „Butcher's Pan", price: „7,70€", info: „250 g /beef tongue, tripe, liver, mushrooms & wine/" },{ name: „Shrimp with Sour Cream", price: „10,50€", info: „200 g" },{ name: „Beef Liver with Egg & Pickles", price: „6,00€", info: „250 g" },{ name: „Pork Ears", price: „6,00€", info: „250 g" },{ name: „Chicken Wings", price: „6,60€", info: „300 g" },{ name: „Crispy Chicken Bites with Garlic Sauce", price: „7,20€", info: „250 g" },{ name: „Crispy Potatoes with Bacon & Cheese", price: „6,70€", info: „250 g" },{ name: „Fried Potatoes with Parmesan & Truffle", price: „5,00€", info: „200 g" },{ name: „Fried Potatoes", price: „3,60€", info: „200 g" },{ name: „Garlic Bread", price: „1,50€", info: „100 g" },{ name: „Cheese Bread", price: „3,00€", info: „140 g" }] },
-                        { name: „Tomato Special Offers", items: [{ name: „BBQ Board for 1 Person", price: „10,00€", info: „250 g" },{ name: „BBQ Board for 2 People", price: „20,00€", info: „500 g" },{ name: „BBQ Board for 4 People", price: „40,00€", info: „1.5 kg" }] },
-                        { name: „BBQ", items: [{ name: „Our Three Meatballs", price: „8,50€", info: „300 g /with sauce & potatoes/" },{ name: „Pork Ribs", price: „13,50€", info: „450 g" },{ name: „Beef Sausage", price: „8,50€", info: „300 g" },{ name: „Adana Kebab", price: „9,50€", info: „300 g" },{ name: „Pork Shish Kebab", price: „8,50€", info: „350 g" },{ name: „Chorizo Sausages", price: „9,50€", info: „250 g" },{ name: „Beef Tenderloin with Mushroom Sauce", price: „20,00€", info: „300 g" }] },
-                        { name: „Fish & Vegetarian", items: [{ name: „Sea Bass Fillet Pan-Fried", price: „19,00€", info: „300 g" },{ name: „Salmon Fillet BBQ", price: „19,00€", info: „300 g" },{ name: „Risotto with Chicken & Mushrooms", price: „9,00€", info: „300 g" },{ name: „Pasta with Shrimp & Cherry Tomatoes", price: „11,00€", info: „300 g /baby spinach/" },{ name: „Pasta with Grilled Vegetables", price: „8,00€", info: „300 g /basil/" }] }
+                    title: "Food Menu",
+                    categories: [
+                        {
+                            name: "Salads",
+                            items: [
+                                { name: "Salad with Shrimp, Avocado & Mango", price: "11,00€ / 21,51 BGN", info: "300 g" },
+                                { name: "Tuna Salad", price: "8,50€ / 16,62 BGN", info: "300 g" },
+                                { name: "Mediterranean Salad with Mozzarella", price: "7,50€ / 14,67 BGN", info: "300 g /lettuce, tomatoes, cucumbers, olives and Arabic bread/" },
+                                { name: "Village Salad with Grilled Vegetables", price: "7,00€ / 13,69 BGN", info: "300 g /tomatoes, cucumbers, olives and egg, crumbled cheese/" },
+                                { name: "Meshalale Salad", price: "7,50€ / 14,67 BGN", info: "300 g /with tomatoes, hummus, roasted pepper and olives/" },
+                                { name: "'Caesar' Salad with Chicken & Bacon", price: "8,70€ / 17,01 BGN", info: "300 g" },
+                                { name: "Salad with Colorful Tomatoes & Mozzarella", price: "7,50€ / 14,67 BGN", info: "300 g" },
+                                { name: "Rakia Salad with Halloumi", price: "7,50€ / 14,67 BGN", info: "300 g" },
+                                { name: "Shopska Salad", price: "5,70€ / 11,14 BGN", info: "300 g" },
+                                { name: "Milk Salad", price: "5,20€ / 10,17 BGN", info: "200 g" }
+                            ]
+                        },
+                        {
+                            name: "Meze",
+                            items: [
+                                { name: "Trio of Hummus Dips, Marinated Olives with Feta & Mutabal", price: "7,70€ / 15,05 BGN", info: "400 g" },
+                                { name: "Beef Tongue with Butter & Mushrooms", price: "9,30€ / 18,18 BGN", info: "250 g" },
+                                { name: "Pork Ears", price: "6,00€ / 11,73 BGN", info: "250 g" },
+                                { name: "Crispy Chicken Bites with Garlic Sauce", price: "7,20€ / 14,08 BGN", info: "250 g" },
+                                { name: "Chorizo Sausages", price: "9,50€ / 18,62 BGN", info: "250 g" },
+                                { name: "Homemade Potatoes with Pancetta & Cheese", price: "6,70€ / 13,10 BGN", info: "250 g" },
+                                { name: "Fried Potatoes with Parmesan & Truffle", price: "5,00€ / 9,77 BGN", info: "200 g" },
+                                { name: "Fried Potatoes", price: "3,60€ / 7,04 BGN", info: "200 g" },
+                                { name: "Garlic Flatbread", price: "1,50€ / 2,93 BGN", info: "100 g" },
+                                { name: "Flatbread with Cheese", price: "3,00€ / 5,85 BGN", info: "140 g" }
+                            ]
+                        },
+                        {
+                            name: "Tomato Special Offers",
+                            items: [
+                                { name: "BBQ Board for 2 People", price: "20,00€ / 39,00 BGN", info: "600 g /meatballs, beef sausage, chicken fillets, smoked pork ribs, fried potatoes/" },
+                                { name: "BBQ Board for 4 People", price: "40,00€ / 78,23 BGN", info: "1.400 kg /meatballs, beef sausage, chicken fillets, smoked pork ribs, pork neck steak, fried potatoes/" }
+                            ]
+                        },
+                        {
+                            name: "BBQ",
+                            items: [
+                                { name: "Babek Meatballs", price: "8,70€ / 16,62 BGN", info: "300 g /served with homemade potatoes and salsa/" },
+                                { name: "Beef Sausage", price: "8,70€ / 16,62 BGN", info: "300 g /served with homemade potatoes and salsa/" },
+                                { name: "Chicken Steak", price: "8,70€ / 16,62 BGN", info: "300 g /served with homemade potatoes and salsa/" },
+                                { name: "Royal Cutlet", price: "10,00€ / 19,50 BGN", info: "500 g /served with homemade potatoes and salsa/" },
+                                { name: "Grilled Carp or Trout", price: "10,00€ / 19,50 BGN", info: "300 g /served with homemade potatoes and salsa/" }
+                            ]
+                        }
                     ]
                 }
             ]
@@ -147,20 +231,20 @@
     };
 
     // ----------------------------------------------------------------------
-    Const App = () => {
-        Const [lang, setLang] = useState(‚BG'); // ‚BG' or ‚EN'
-        Const [menuSection, setMenuSection] = useState(‚drinks'); // ‚drinks' or ‚food'
-        Const t = MENU_DATA[lang];
+    const App = () => {
+        const [lang, setLang] = useState('BG'); // 'BG' or 'EN'
+        const [menuSection, setMenuSection] = useState('drinks'); // 'drinks' or 'food'
+        const t = MENU_DATA[lang];
 
         // find drinks & food groups
-        Const drinksGroup = t.fullMenu[0];
-        Const foodGroup = t.fullMenu[1];
+        const drinksGroup = t.fullMenu[0];
+        const foodGroup = t.fullMenu[1];
 
-        Return (
+        return (
             <div className="min-h-screen bg-jazz-black selection:bg-jazz-gold selection:text-jazz-black">
                 {/* Fixed Header with language toggle + subtle branding */}
                 <div className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-jazz-black/70 border-b border-white/5 py-5 px-6 md:px-16 flex justify-between items-center">
-                    <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: ‚smooth' })}>
+                    <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                         <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
                             <span className="text-jazz-gold text-xs font-bold">T</span>
                         </div>
@@ -168,9 +252,9 @@
                     </div>
                     <div className="flex items-center gap-4">
                         <div className="flex items-center gap-3 bg-white/[0.03] border border-white/10 rounded-full px-4 py-2">
-                            <button onClick={() => setLang(‚BG')} className={`text-[10px] font-black tracking-widest transition-colors ${lang === ‚BG' ? ‚text-jazz-gold' : ‚text-white/40 hover:text-white'}`}>BG</button>
+                            <button onClick={() => setLang('BG')} className={`text-[10px] font-black tracking-widest transition-colors ${lang === 'BG' ? 'text-jazz-gold' : 'text-white/40 hover:text-white'}`}>BG</button>
                             <div className="w-[1px] h-3 bg-white/10"></div>
-                            <button onClick={() => setLang(‚EN')} className={`text-[10px] font-black tracking-widest transition-colors ${lang === ‚EN' ? ‚text-jazz-gold' : ‚text-white/40 hover:text-white'}`}>EN</button>
+                            <button onClick={() => setLang('EN')} className={`text-[10px] font-black tracking-widest transition-colors ${lang === 'EN' ? 'text-jazz-gold' : 'text-white/40 hover:text-white'}`}>EN</button>
                         </div>
                     </div>
                 </div>
@@ -180,7 +264,7 @@
                     <div className="text-center mb-12 md:mb-20">
                         <span className="text-[10px] uppercase tracking-[0.6em] text-jazz-gold mb-6 block font-bold opacity-60">{t.fullMenuTitle}</span>
                         <h2 className="text-5xl md:text-9xl font-serif text-white italic tracking-tighter leading-none">
-                            {t.menuHeader.split(‚ ‚)[0]} <br /> {t.menuHeader.split(‚ ‚).slice(1).join(‚ ‚)}
+                            {t.menuHeader.split(' ')[0]} <br /> {t.menuHeader.split(' ').slice(1).join(' ')}
                         </h2>
                         
                         <div className="mt-16 flex flex-col items-center">
@@ -198,14 +282,14 @@
                     {/* Toggle Buttons (Drinks / Food) */}
                     <div className="flex flex-wrap justify-center gap-4 mb-20">
                         <button
-                            onClick={() => setMenuSection(‚drinks')}
-                            className={`px-8 md:px-16 py-4 md:py-5 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 flex items-center gap-3 ${menuSection === ‚drinks' ? ‚bg-jazz-gold text-jazz-black border-jazz-gold shadow-2xl scale-[1.05]' : ‚bg-transparent text-white border-white/20 hover:border-jazz-gold/50'}`}
+                            onClick={() => setMenuSection('drinks')}
+                            className={`px-8 md:px-16 py-4 md:py-5 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 flex items-center gap-3 ${menuSection === 'drinks' ? 'bg-jazz-gold text-jazz-black border-jazz-gold shadow-2xl scale-[1.05]' : 'bg-transparent text-white border-white/20 hover:border-jazz-gold/50'}`}
                         >
                             <Wine size={16} /> {t.drinksTab}
                         </button>
                         <button
-                            onClick={() => setMenuSection(‚food')}
-                            className={`px-8 md:px-16 py-4 md:py-5 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 flex items-center gap-3 ${menuSection === ‚food' ? ‚bg-jazz-gold text-jazz-black border-jazz-gold shadow-2xl scale-[1.05]' : ‚bg-transparent text-white border-white/20 hover:border-jazz-gold/50'}`}
+                            onClick={() => setMenuSection('food')}
+                            className={`px-8 md:px-16 py-4 md:py-5 border text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 flex items-center gap-3 ${menuSection === 'food' ? 'bg-jazz-gold text-jazz-black border-jazz-gold shadow-2xl scale-[1.05]' : 'bg-transparent text-white border-white/20 hover:border-jazz-gold/50'}`}
                         >
                             <UtensilsCrossed size={16} /> {t.foodTab}
                         </button>
@@ -214,14 +298,14 @@
                     {/* Dynamic Menu Content */}
                     <AnimatePresence mode="wait">
                         <motion.div
-                            Key={menuSection}
-                            Initial={{ opacity: 0, y: 20 }}
-                            Animate={{ opacity: 1, y: 0 }}
-                            Exit={{ opacity: 0, y: -10 }}
-                            Transition={{ duration: 0.4 }}
+                            key={menuSection}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.4 }}
                             className="space-y-32"
                         >
-                            {menuSection === ‚drinks' && drinksGroup && (
+                            {menuSection === 'drinks' && drinksGroup && (
                                 <div>
                                     <div className="flex flex-col items-center mb-16 px-4">
                                         <div className="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
@@ -247,7 +331,7 @@
                                     </div>
                                 </div>
                             )}
-                            {menuSection === ‚food' && foodGroup && (
+                            {menuSection === 'food' && foodGroup && (
                                 <div>
                                     <div className="flex flex-col items-center mb-16 px-4">
                                         <div className="w-12 h-[1px] bg-jazz-gold/30 mb-6"></div>
@@ -275,19 +359,25 @@
                             )}
                         </motion.div>
                     </AnimatePresence>
-                </div>
 
-                {/* Footer (minimal) */}
-                <footer className="border-t border-white/10 py-12 px-6 text-center text-white/30 text-[9px] uppercase tracking-[0.3em]">
-                    <p>© 2026 Tomato · {lang === ‚BG' ? ‚Естетично меню' : ‚Aesthetic Menu'}</p>
-                </footer>
+                    {/* Simple Footer */}
+                    <div className="mt-40 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div className="text-center md:text-left">
+                            <p className="text-[10px] uppercase tracking-widest text-white/20">© 2026 Tomato · Plovdiv</p>
+                        </div>
+                        <div className="flex gap-8">
+                            <a href="#" className="text-[10px] uppercase tracking-widest text-white/40 hover:text-jazz-gold transition-colors">Instagram</a>
+                            <a href="#" className="text-[10px] uppercase tracking-widest text-white/40 hover:text-jazz-gold transition-colors">Facebook</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     };
 
-    Const rootElement = document.getElementById(‚root');
-    Const root = createRoot(rootElement);
-    Root.render(React.createElement(App));
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
 </script>
+
 </body>
 </html>
